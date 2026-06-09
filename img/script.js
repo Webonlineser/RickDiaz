@@ -17,6 +17,7 @@ let lastTime = 0;
 let velocity = 0;
 let momentumId = null;
 let scrollTicking = false;
+const isTouchDevice = window.matchMedia('(hover: none)').matches || navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -139,7 +140,7 @@ galleryCarousel?.querySelectorAll('.gallery-card').forEach((card) => {
   });
 
   card.addEventListener('pointermove', (event) => {
-    if (isDragging) return;
+    if (isDragging || isTouchDevice || event.pointerType === 'touch') return;
     const rect = card.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
