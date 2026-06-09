@@ -1469,8 +1469,19 @@ body.overlay-active {
 
 @media (max-width: 900px) {
   .hero,
-  .about-wrap {
+  .about-wrap,
+  .social-panel {
     grid-template-columns: 1fr;
+  }
+
+  .instagram-card {
+    grid-template-columns: 1fr !important;
+    align-items: stretch;
+  }
+
+  .instagram-card .social-logo {
+    justify-self: center;
+    margin: 0 auto 10px;
   }
 
   .gallery-carousel {
